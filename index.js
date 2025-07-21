@@ -1,5 +1,5 @@
 let score = 0;
-let timeLeft = 10;
+let timeLeft = 30;
 let comboStreak = 0;
 let moleTimer = null;
 let countdownTimer = null;
@@ -36,7 +36,8 @@ function startGame() {
     } else {
       randomHole.classList.add("mole");
     }
-  }, 2000);
+    setTimeout(() => randomHole.classList.remove("mole", "bomb"), 1000);
+  }, 1000);
 
   countdownTimer = setInterval(() => {
     timeLeft--;
@@ -44,7 +45,7 @@ function startGame() {
     if (timeLeft <= 0) {
       endGame();
     }
-  }, 2000);
+  }, 1000);
 
   startBtn.disabled = true;
   pauseBtn.disabled = false;
@@ -70,7 +71,7 @@ function resetGame() {
   holes.forEach((hole) => hole.classList.remove("mole", "bomb"));
 
   score = 0;
-  timeLeft = 10;
+  timeLeft = 30;
   comboStreak = 0;
   scoreDisplay.innerText = score;
   timerDisplay.innerText = `Time: ${timeLeft}`;
