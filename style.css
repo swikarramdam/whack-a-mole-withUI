@@ -1,0 +1,288 @@
+body{
+  background-color: #e28e3a; /* warm orange */
+  background-image: url('./images/bg.jpg'); /* Optional: add a dirt texture image if you have */
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Fredoka One', cursive, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* A chunky font like 'Fredoka One' */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 100vh;
+  color: #4a2c16; 
+  /* height: 800px; */
+  /* width: auto; */
+  align-self: center;
+}
+
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 200px;
+}
+
+.controls button {
+  width: 100%;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  border-radius: 15px;
+  font-family: 'Fredoka One', cursive;
+}
+
+
+/* Title style */
+h1 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #f9bf72;
+  text-shadow:
+    3px 3px 0 #6b3a0b, /* dark brown shadow for 3D effect */
+    6px 6px 15px rgba(0,0,0,0.3);
+  letter-spacing: 0.1em;
+  margin-bottom: 30px;
+  font-family: 'Fredoka One', cursive, sans-serif;
+  user-select: none;
+}
+
+/* Start button */
+button {
+  background-color: #f8c640; /* bright yellow */
+  border-radius: 25px;
+  padding: 15px 60px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #cc9f2c;
+  transition: transform 0.15s ease;
+  user-select: none;
+  margin-top: 10px;
+}
+
+button:hover:enabled {
+  transform: scale(1.1);
+}
+
+/* Game area */
+#whack-a-mole {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  width: fit-content;
+  margin-top: 40px;
+}
+
+/* Each hole */
+.hole {
+  position: relative;
+  width: 150px;
+  height: 120px;
+  background: url('images/hole.png') no-repeat center center;
+  background-size: contain;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s;
+  margin-top: 200px;
+  margin-left: 200px;
+}
+
+/* Mole popping out */
+.hole.mole {
+  background: url('images/mole.png') no-repeat center bottom;
+  background-size: contain;
+  animation: pop 0.3s ease forwards;
+}
+
+/* Bomb */
+.hole.bomb {
+  background: url('images/bomb.png') no-repeat center bottom;
+  background-size: contain;
+  animation: pop 0.3s ease forwards;
+}
+
+/* Pop animation */
+@keyframes pop {
+  0% {
+    transform: translateY(50%) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(0) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 420px) {
+  .hole {
+    width: 90px;
+    height: 90px;
+  }
+
+  button {
+    padding: 12px 40px;
+    font-size: 1.2rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Modal base */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  transition: opacity 0.3s ease;
+}
+
+/* Hide modal */
+.modal.hidden {
+  display: none;
+}
+
+/* Modal box */
+.modal-content {
+  background: #fff8dc;
+  padding: 30px 40px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  font-family: 'Comic Sans MS', 'Fredoka One', cursive;
+  animation: bounceIn 0.6s ease;
+}
+
+/* Score number */
+#final-score {
+  display: block;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ff5722;
+  margin: 15px 0;
+  text-shadow: 1px 1px #fff, 2px 2px #ff9800;
+}
+
+/* Button */
+#play-again {
+  background: #fdd835;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #caa700;
+  transition: transform 0.2s ease;
+}
+
+#play-again:hover {
+  transform: scale(1.1);
+}
+
+/* Bounce animation */
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#timer {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: white;
+  background: #ffde7d;
+  padding: 12px 30px;
+  border-radius: 25px;
+  margin: 15px auto;
+  display: inline-block;
+  box-shadow: 0 5px 0 #dba20d, inset 0 0 10px #fff8dc;
+  border: 4px solid #ffc107;
+  text-shadow: 1px 1px #fff, 2px 2px #ffa000;
+  font-family: 'Fredoka One', cursive;
+  animation: pulseTimer 1s infinite alternate;
+  transition: background 0.3s ease;
+}
+
+@keyframes pulseTimer {
+  from {
+    transform: scale(1);
+    background-color: #ffe082;
+  }
+  to {
+    transform: scale(1.05);
+    background-color: #ffeb99;
+  }
+}
+
+#timer::before {
+  content: "⏰ ";
+  font-size: 1.5rem;
+  margin-right: 6px;
+}
+
+
+#score {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: white;
+  background: #ffde7d;
+  padding: 12px 30px;
+  border-radius: 25px;
+  margin: 15px auto;
+  display: inline-block;
+  box-shadow: 0 5px 0 #dba20d, inset 0 0 10px #fff8dc;
+  border: 4px solid #ffc107;
+  text-shadow: 1px 1px #fff, 2px 2px #ffa000;
+  font-family: 'Fredoka One', cursive;
+  transition: transform 0.15s ease;
+  animation: bounceScore 1.2s infinite alternate;
+}
+
+@keyframes bounceScore {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+#score::before {
+  content: "🏆 ";
+  margin-right: 5px;
+}

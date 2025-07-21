@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Whack-a-mole</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./index.js" defer></script>
+    <!-- ✅ defer is important -->
+  </head>
+  <body>
+    <div class="container">
+      <div class="side-panel">
+        <h1 id="score">0</h1>
+        <div id="timer">Time: 30</div>
+        <div class="controls">
+          <button id="start">Start</button>
+          <button id="pause">Pause</button>
+          <button id="reset">Reset</button>
+        </div>
+      </div>
+
+      <div id="whack-a-mole">
+        <div class="hole"></div>
+        <div class="hole"></div>
+        <div class="hole"></div>
+      </div>
+
+      <!-- Cartoon Score Modal -->
+      <div id="score-modal" class="modal hidden">
+        <div class="modal-content">
+          <h2>🎉 Game Over!</h2>
+          <p>Your Score:</p>
+          <span id="final-score">0</span>
+          <button id="play-again">Play Again</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
