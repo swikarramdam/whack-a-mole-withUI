@@ -10,8 +10,7 @@ body{
   padding: 40px 20px;
   min-height: 100vh;
   color: #4a2c16; 
-  /* height: 800px; */
-  /* width: auto; */
+
   align-self: center;
 }
 
@@ -93,8 +92,8 @@ button:hover:enabled {
   border-radius: 50%;
   cursor: pointer;
   transition: transform 0.3s;
-  margin-top: 200px;
-  margin-left: 200px;
+  margin: 150px;
+  /* margin-left: 200px; */
 }
 
 /* Mole popping out */
